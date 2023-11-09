@@ -19,15 +19,18 @@ class DatabaseSeeder extends Seeder
         User::factory(10)->create();
 
         /* CREATE PRE-DEFINED USER */
-        User::factory()->create([
-            'firstname' => 'Rabi',
-            'lastname' => 'Gorkhali',
-            'username' => 'rabigorkhali',
-            'email' => 'rabigorkhali@gmail.com',
-            'password' => Hash::make('rabi@123'),
-            'email_verified_at' => now(),
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
+        $userData = User::where('username', 'rabigorkhali')->first();
+        if (!$userData) {
+            User::factory()->create([
+                'firstname' => 'Rabi',
+                'lastname' => 'Gorkhali',
+                'username' => 'rabigorkhali',
+                'email' => 'rabigorkhali@gmail.com',
+                'password' => Hash::make('rabi@123'),
+                'email_verified_at' => now(),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+        }
     }
 }

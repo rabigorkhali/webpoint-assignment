@@ -6,6 +6,8 @@ RUN a2enmod rewrite
 
 # Linux Library
 RUN apt-get update -y && apt-get install -y default-mysql-client && apt-get install -y \
+    nodejs \
+    npm \
     libicu-dev \
     libmariadb-dev \
     unzip zip \
