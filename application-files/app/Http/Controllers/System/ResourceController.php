@@ -68,7 +68,7 @@ class ResourceController extends Controller
             $data = $this->service->indexPageData($request);
             return $this->renderView('index', $data);
         } catch (Throwable $throwable) {
-            return redirect()->back()->withErrors(['alert-danger' => 'Server error.'])->withInput($request->all());
+            return redirect()->back()->withErrors(['alert-danger' => __('messages.server_error')])->withInput($request->all());
         }
     }
 
@@ -85,7 +85,7 @@ class ResourceController extends Controller
             $data['title'] = 'Add ' . $this->moduleName();
             return $this->renderView('create', $data);
         } catch (Throwable $throwable) {
-            return redirect()->back()->withErrors(['alert-danger' => 'Server error.']);
+            return redirect()->back()->withErrors(['alert-danger' => __('messages.server_error')]);
         }
     }
 
@@ -103,9 +103,10 @@ class ResourceController extends Controller
         $request = app()->make($request);
         try {
             $this->service->store($request);
-            return redirect($this->indexUrl())->withErrors(['alert-success' => 'Successfully created.']);
+            return redirect($this->indexUrl())->withErrors(['alert-success' => __('messages.create_message')]);
         } catch (Throwable $throwable) {
-            return redirect()->back()->withInput($request->all())->withErrors(['alert-danger' => 'Server error.']);
+            dd($throwable);
+            return redirect()->back()->withInput($request->all())->withErrors(['alert-danger' => __('messages.server_error')]);
         }
     }
 
@@ -121,7 +122,8 @@ class ResourceController extends Controller
             $data = $this->service->editPageData($request, $id);
             return $this->renderView('edit', $data);
         } catch (Throwable $throwable) {
-            return redirect()->back()->withErrors(['alert-danger' => 'Server error.']);
+            dd($throwable);
+            return redirect()->back()->withErrors(['alert-danger' => __('messages.server_error')]);
         }
     }
 
@@ -132,7 +134,7 @@ class ResourceController extends Controller
             $data['title'] = $this->moduleName() . ' Detail';
             return $this->renderView('show', $data);
         } catch (Throwable $throwable) {
-            return redirect($this->getUrl())->withErrors(['alert-danger' => 'Server error.']);
+            return redirect($this->indexUrl())->withErrors(['alert-danger' => __('messages.server_error')]);
         }
     }
 
@@ -150,9 +152,10 @@ class ResourceController extends Controller
         $request = app()->make($request);
         try {
             $this->service->update($request, $id);
-            return redirect($this->indexUrl())->withErrors(['alert-success' => 'Successfully updated.']);
+            return redirect($this->indexUrl())->withErrors(['alert-success' => __('messages.update_message')]);
         } catch (Throwable $throwable) {
-            return redirect()->back()->withErrors(['alert-danger' => 'Server error.']);
+            dd($throwable);
+            return redirect()->back()->withErrors(['alert-danger' => __('messages.server_error')]);
         }
     }
 
@@ -170,7 +173,7 @@ class ResourceController extends Controller
             }
             return redirect($this->indexUrl())->withErrors(['alert-success' => 'Successfully deleted.']);
         } catch (Throwable $throwable) {
-            return redirect()->back()->withErrors(['alert-danger' => 'Delete failed.']);
+            return redirect()->back()->withErrors(['alert-danger' => __('messages.server_error')]);
         }
     }
 }

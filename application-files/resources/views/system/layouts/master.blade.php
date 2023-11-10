@@ -26,7 +26,7 @@
             <div class="container">
                 @if (isset($indexUrl) && $indexUrl == env('SYSTEM_PREFIX', '/system') . '/' . last(explode('/', url()->current())))
                     <a class="btn btn-sm btn-primary mb-1" href="{{ URL::to($indexUrl . '/create') }}">Create</a>
-                @else
+                @elseif(isset($indexUrl))
                     <a class="btn btn-sm btn-success mb-1" href="{{ URL::to($indexUrl) }}">Back</a>
                 @endif
                 <div class="row justify-content-center">
@@ -70,6 +70,7 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+{{--NOTE FOR DEVELOPER: COMPILE WITH WEBPACK AND INSTEAD OF USING DIRECTLY, IMPORT COMPILED JS --}}
 <script>
     // Auto-close the success alert after 5 seconds
     setTimeout(function() {

@@ -34,6 +34,8 @@ class UserRequest extends FormRequest
                 'email' => 'required|email|unique:users',
                 'password' => 'required|string|min:8',
                 'confirm_password' => 'required|string|min:8|same:password',
+                'bio' => 'max:255|nullable',
+
             ];
         }
         if ($request->method() == 'PUT') {
@@ -42,9 +44,9 @@ class UserRequest extends FormRequest
                 'lastname' => 'required|string|max:255',
                 'username' => 'required|string|max:255|unique:users,username,' . $request->user,
                 'email' => 'required|email|unique:users,email,' . $request->user,
+                'bio' => 'max:255|nullable',
             ];
         }
-
         return $validate;
     }
 

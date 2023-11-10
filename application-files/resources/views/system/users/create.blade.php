@@ -43,5 +43,15 @@
             </div>
         </div>
 
+        <hr>
+        <h5>Details</h5>
+        <hr>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="bio">Bio:</label>
+                <textarea class="form-control @if ($errors->first('bio')) is-invalid @endif" id="bio" name="bio">{{old('bio')}}</textarea>
+                <div class="invalid-feedback">{{ $errors->first('bio') }}</div>
+            </div>
+        </div>
         <button type="submit" class="btn btn-primary">Create</button>
     @endsection

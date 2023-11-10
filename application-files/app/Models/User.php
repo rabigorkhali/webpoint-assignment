@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Events\UserSaved;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -44,4 +46,26 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function detail()
+    {
+        return $this->hasOne(UserDetail::class);
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        /* HANDLE EVENT ON CREATE  */
+        static::creating(function ($user) {
+            $detail = $user->detail;
+            event(new UserSaved($user, $detail));
+        });
+
+        /* HANDLE  EVENT ON UPDATE*/
+        static::updating(function ($user) {
+            $detail = $user->detail;
+            event(new UserSaved($user, $detail));
+        });
+    }
 }
