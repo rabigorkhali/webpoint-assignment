@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
     <!-- Scripts -->
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/css/app.css') }}">
 </head>
 
 <body>
@@ -67,36 +67,6 @@
 </body>
 
 {{-- SCRIPT --}}
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-{{--NOTE FOR DEVELOPER: COMPILE WITH WEBPACK AND INSTEAD OF USING DIRECTLY, IMPORT COMPILED JS --}}
-<script>
-    // Auto-close the success alert after 5 seconds
-    setTimeout(function() {
-        $("#successAlert").alert('close');
-    }, 5000);
-
-    // Auto-close the danger alert after 5 seconds
-    setTimeout(function() {
-        $("#dangerAlert").alert('close');
-    }, 5000);
-</script>
-
-{{-- DELETE MODAL SCRIPT --}}
-<script>
-    $(document).ready(function() {
-        $(".delete-button").click(function() {
-            var username = $(this).data("username");
-            var actionUrl = $(this).data("actionurl");
-            $("#confirmationText").text("Are you sure you want to delete username " + username + "?");
-            $("#deleteForm").attr("action", actionUrl);
-        });
-
-    });
-</script>
-{{-- END DELETE MODAL SCRIPT --}}
-
-{{-- SCRIPT --}}
+@include('system.layouts.script')
 
 </html>
