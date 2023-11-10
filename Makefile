@@ -19,11 +19,11 @@ composer-install:
 	docker exec webpoint-assignment-rabigorkhali-container bash -c "composer install"
 
 migrate:
-	docker exec webpoint-assignment-rabigorkhali-container bash -c "php artisan migrate"
+	docker exec webpoint-assignment-rabigorkhali-container bash -c "php artisan migrate --force"
 
 initial-commands:	
 	docker exec webpoint-assignment-rabigorkhali-container bash -c "npm install"
 	docker exec webpoint-assignment-rabigorkhali-container bash -c "npm run dev"
 
 data:	
-	docker exec webpoint-assignment-rabigorkhali-container bash -c "php artisan db:seed"
+	docker exec webpoint-assignment-rabigorkhali-container bash -c "php artisan db:seed --force"
