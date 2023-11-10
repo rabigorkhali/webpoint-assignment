@@ -2,7 +2,7 @@
 ```markdown
 # WebPoint Assignment
 
-This project is designed to run with Docker. Before you start, make sure Docker is installed on your system, and verify that the ports specified in the "docker-compose.yml" file are available.
+This project is designed to run with Docker. Before you start, make sure Docker is installed on your system, and verify that the ports specified in the "docker-compose.yml" file are available in your system.
 
 ## Setup Instructions
 
@@ -18,7 +18,7 @@ git checkout main
 
 ### Step 3: Run Setup
 1. Open your terminal and navigate to the cloned repository folder.
-2. Make file .env from .env.example.
+2. Make file .env or copy as from .env.example.
 3. Run the following command outside the 'application-files' folder, at the same path level as where the Makefile is situated.
    ```bash
    make setup
@@ -27,7 +27,7 @@ Note: Please look at "Makefile" for more short hand commands.
 ## After Successful Setup
 
 ### Access the Project
-Visit [http://localhost:9002/public/login](http://localhost:9002/public/login) in your browser.
+Visit [http://localhost:9002/login](http://localhost:9002/login) in your browser.
 
 - Default User Email: rabigorkhali@gmail.com
 - Default Password: rabi@123

@@ -105,7 +105,6 @@ class ResourceController extends Controller
             $this->service->store($request);
             return redirect($this->indexUrl())->withErrors(['alert-success' => __('messages.create_message')]);
         } catch (Throwable $throwable) {
-            dd($throwable);
             return redirect()->back()->withInput($request->all())->withErrors(['alert-danger' => __('messages.server_error')]);
         }
     }
@@ -122,7 +121,6 @@ class ResourceController extends Controller
             $data = $this->service->editPageData($request, $id);
             return $this->renderView('edit', $data);
         } catch (Throwable $throwable) {
-            dd($throwable);
             return redirect()->back()->withErrors(['alert-danger' => __('messages.server_error')]);
         }
     }
@@ -154,7 +152,6 @@ class ResourceController extends Controller
             $this->service->update($request, $id);
             return redirect($this->indexUrl())->withErrors(['alert-success' => __('messages.update_message')]);
         } catch (Throwable $throwable) {
-            dd($throwable);
             return redirect()->back()->withErrors(['alert-danger' => __('messages.server_error')]);
         }
     }
