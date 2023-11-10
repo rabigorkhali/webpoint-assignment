@@ -18,7 +18,8 @@ git checkout main
 
 ### Step 3: Run Setup
 1. Open your terminal and navigate to the cloned repository folder.
-2. Run the following command outside the 'application-files' folder, at the same path level as where the Makefile is situated.
+2. Make file .env from .env.example.
+3. Run the following command outside the 'application-files' folder, at the same path level as where the Makefile is situated.
    ```bash
    make setup
    ```
