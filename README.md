@@ -22,7 +22,7 @@ git checkout main
    ```bash
    make setup
    ```
-
+Note: Please look at "Makefile" for more short hand commands.
 ## After Successful Setup
 
 ### Access the Project
