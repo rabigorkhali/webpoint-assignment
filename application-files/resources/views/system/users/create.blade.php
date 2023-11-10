@@ -52,6 +52,17 @@
                 <textarea class="form-control @if ($errors->first('bio')) is-invalid @endif" id="bio" name="bio">{{old('bio')}}</textarea>
                 <div class="invalid-feedback">{{ $errors->first('bio') }}</div>
             </div>
+            <div class="form-group col-md-6">
+                <label>Status:</label>
+                <div class="form-check">
+                    <input type="radio" id="active" name="status" value="1" @if(old('status') == '1') checked @endif checked class="form-check-input">
+                    <label class="form-check-label" for="active">Active</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" id="inactive" name="status" value="0" @if(old('status') == '0') checked @endif class="form-check-input">
+                    <label class="form-check-label" for="inactive">Inactive</label>
+                </div>
+            </div>
         </div>
         <button type="submit" class="btn btn-primary">Create</button>
     @endsection

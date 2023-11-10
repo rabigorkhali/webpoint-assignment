@@ -6,6 +6,7 @@ use App\Events\UserSaved;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class UserService extends Service
 {
@@ -18,6 +19,7 @@ class UserService extends Service
     {
         $data = $request->except('_token');
         $data['password'] = Hash::make($data['password']);
+        // DB::beginTransaction();
         $user = $this->model->create($data);
         event(new UserSaved($user, [
             'bio' => $data['bio'],

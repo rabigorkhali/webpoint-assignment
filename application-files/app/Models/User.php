@@ -8,6 +8,7 @@ use App\Events\UserSaved;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Log;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -52,20 +53,22 @@ class User extends Authenticatable
         return $this->hasOne(UserDetail::class);
     }
 
-    protected static function boot()
-    {
-        parent::boot();
+    // protected static function boot()
+    // {
+    //     parent::boot();
 
-        /* HANDLE EVENT ON CREATE  */
-        static::creating(function ($user) {
-            $detail = $user->detail;
-            event(new UserSaved($user, $detail));
-        });
+    //     /* HANDLE EVENT ON CREATE  */
+    //     static::creating(function ($user) {
+    //         $detail = $user->detail;
+    //         Log::info('Creating event dispatched.', ['user_id' => $user->id, 'detail' => $detail]);
+    //         event(new UserSaved($user, $detail));
+    //     });
 
-        /* HANDLE  EVENT ON UPDATE*/
-        static::updating(function ($user) {
-            $detail = $user->detail;
-            event(new UserSaved($user, $detail));
-        });
-    }
+    //     /* HANDLE  EVENT ON UPDATE*/
+    //     static::updating(function ($user) {
+    //         $detail = $user->detail;
+    //         Log::info('Updating event dispatched.', ['user_id' => $user->id, 'detail' => $detail]);
+    //         event(new UserSaved($user, $detail));
+    //     });
+    // }
 }
