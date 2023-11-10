@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\System\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,33 +15,24 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+     return view('welcome');
 });
 
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group([ 'prefix' => 'system', 'middleware' => ['auth']], function () {
+    Route::resource('users', UserController::class);
+});
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::resource('users', UserController::class);
+/* SAMPLE ON HOW TO USE ROUTE NAMES
+Route::resource('users', UserController::class)->names([
+    'index'   => 'users.index',
+    'create'  => 'users.create',
+    'store'   => 'users.store',
+    'show'    => 'users.show',
+    'edit'    => 'users.edit',
+    'update'  => 'users.update',
+    'destroy' => 'users.destroy',
+]); */
