@@ -29,7 +29,7 @@ Note: Please look at "Makefile" for more short hand commands.
 ### Access the Project
 Visit [http://localhost:9002/login](http://localhost:9002/login) in your browser.Replace your port as mentioned in 'docker-compose.yml'.
 
-- Default User Email: rabigorkhali@gmail.com
+- Default User Email: rabigorkhaly@gmail.com
 - Default Password: rabi@123
 
 ### Access PHPMyAdmin
