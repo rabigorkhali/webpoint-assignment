@@ -20,7 +20,7 @@
             @if (Route::has('login'))
                 <div class="p-6 text-center z-10">
 
-                    Default Email:rabigorkhali@gmail.com<br>
+                    Default Email:rabigorkhaly@gmail.com<br>
                     Default Password:rabi@123<br>
                     <br>
                     @auth

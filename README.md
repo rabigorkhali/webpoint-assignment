@@ -27,13 +27,13 @@ Note: Please look at "Makefile" for more short hand commands.
 ## After Successful Setup
 
 ### Access the Project
-Visit [http://localhost:9002/login](http://localhost:9002/login) in your browser.
+Visit [http://localhost:9002/login](http://localhost:9002/login) in your browser.Replace your port as mentioned in 'docker-compose.yml'.
 
 - Default User Email: rabigorkhali@gmail.com
 - Default Password: rabi@123
 
 ### Access PHPMyAdmin
-To access PHPMyAdmin, go to [http://localhost:9001/](http://localhost:9001/) in your browser.
+To access PHPMyAdmin, go to [http://localhost:9001/](http://localhost:9001/) in your browser. Replace your port as mentioned in 'docker-compose.yml'
 
 - Default Server: mysql_db
 - Default Username: root
